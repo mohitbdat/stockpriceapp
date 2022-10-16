@@ -23,5 +23,10 @@ def index():
     response = requests.get(api_url) #Connect to openweather and read the JSON response.
     r=response.json() #Conver the JSON string to a dict for easier parsing.
 
-    return r
+    price = str(r["close"])
+    currency = str(r["currency"])
+
+    reply = '{"fulfillmentMessages": [ {"text": {"text": ["Latest End-of-day price of ' + symbol + ' is ' + price + currency +'"] } } ]}'
+    
+    return reply
 
